@@ -4,7 +4,7 @@ namespace DotnetAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController
+public class WeatherForecastController : ControllerBase
 {
     private readonly string[] _summaries = new[]
     {
