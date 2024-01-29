@@ -68,3 +68,7 @@ C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\runtimes\win
 C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll

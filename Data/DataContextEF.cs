@@ -34,11 +34,11 @@ namespace DotnetAPI.Data
                 .HasKey(u => u.UserId);
 
             modelBuilder.Entity<UserSalary>()
-                .ToTable("Users", "TutorialAppSchema")
+                .ToTable("UserSalary", "TutorialAppSchema")
                 .HasKey(u => u.UserId);
             
             modelBuilder.Entity<UserJobInfo>()
-                .ToTable("Users", "TutorialAppSchema")
+                .ToTable("UserJobInfo", "TutorialAppSchema")
                 .HasKey(u => u.UserId);
         }
     }
