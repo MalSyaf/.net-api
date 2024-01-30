@@ -35,15 +35,7 @@ namespace DotnetAPI.Controllers
                         rng.GetNonZeroBytes(passwordSalt);
                     }
 
-                    string passwordSaltPlusString = _config.GetSection("AppSettings:PasswordKey").Value + Convert.ToBase64String(passwordSalt);
-
-                    byte[] passwordHash = KeyDerivation.Pbkdf2(
-                        password: userRegistration.Password,
-                        salt: Encoding.ASCII.GetBytes(passwordSaltPlusString),
-                        prf: KeyDerivationPrf.HMACSHA256,
-                        iterationCount: 100000,
-                        numBytesRequested: 256 / 8
-                    );
+                    byte[] passwordHash = GetPasswordHash(userRegistration.Password, passwordSalt);
 
                     string sqlAddAuth = @"
                         INSERT INTO TutorialAppSchema.Auth
@@ -53,8 +45,8 @@ namespace DotnetAPI.Controllers
                             [PasswordSalt]
                         )
                         VALUES(
-                            '" + userRegistration.Email + 
-                            "', @PasswordHash, @PasswordSalt,)";
+                            '" + userRegistration.Email +
+                            "', @PasswordHash, @PasswordSalt)";
 
                     List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
@@ -67,7 +59,7 @@ namespace DotnetAPI.Controllers
                     sqlParameters.Add(passwordSaltParameter);
                     sqlParameters.Add(passwordHashParameter);
 
-                    if(_dapper.ExecuteSqlWithParameters(sqlAddAuth, sqlParameters))
+                    if (_dapper.ExecuteSqlWithParameters(sqlAddAuth, sqlParameters))
                     {
                         return Ok();
                     }
@@ -81,7 +73,37 @@ namespace DotnetAPI.Controllers
         [HttpPost("Login")]
         public IActionResult Login(UserForLoginDto userLogin)
         {
+            string sqlForHashAndSalt = @"SELECT
+                    [PasswordHash],
+                    [PasswordSalt]
+                    FROM TutorialAppSchema.Auth WHERE Email = '" + userLogin.Email + "'";
+
+            UserLoginConfirmationDto userConfirmation = _dapper.LoadDataSingle<UserLoginConfirmationDto>(sqlForHashAndSalt);
+
+            byte[] passwordHash = GetPasswordHash(userLogin.Password, userConfirmation.PasswordSalt);
+
+            for (int index = 0; index < passwordHash.Length; index++)
+            {
+                if (passwordHash[index] != userConfirmation.PasswordHash[index])
+                {
+                    return StatusCode(401, "Incorrect password");
+                }
+            }
+
             return Ok();
+        }
+
+        private byte[] GetPasswordHash(string password, byte[] passwordSalt)
+        {
+            string passwordSaltPlusString = _config.GetSection("AppSettings:PasswordKey").Value + Convert.ToBase64String(passwordSalt);
+
+            return KeyDerivation.Pbkdf2(
+                password: password,
+                salt: Encoding.ASCII.GetBytes(passwordSaltPlusString),
+                prf: KeyDerivationPrf.HMACSHA256,
+                iterationCount: 100000,
+                numBytesRequested: 256 / 8
+            );
         }
     }
 }
