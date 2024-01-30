@@ -1,6 +1,8 @@
+using DotnetAPI.Models;
+
 namespace DotnetAPI.Data
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         DataContextEF _entityFramework;
 
@@ -31,6 +33,26 @@ namespace DotnetAPI.Data
             {
                 _entityFramework.Remove(entityToRemove);
             }
+        }
+
+        public IEnumerable<User> GetUsers()
+        {
+            IEnumerable<User> users = _entityFramework.Users.ToList<User>();
+            return users;
+        }
+
+        public User GetSingleUser(int userId)
+        {
+            User? user = _entityFramework.Users
+                .Where(u => u.UserId == userId)
+                .FirstOrDefault<User>();
+
+            if (user != null)
+            {
+                return user;
+            }
+
+            throw new Exception("Failed to Get User");
         }
     }
 }
