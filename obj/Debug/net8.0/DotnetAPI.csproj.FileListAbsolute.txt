@@ -72,3 +72,4 @@ C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.En
 C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\ekhmal.zamri\dotnet-course-code\DotnetAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
