@@ -76,8 +76,8 @@ namespace DotnetAPI.Controllers
         [HttpDelete("Post/{postId}")]
         public IActionResult DeletePost(int postId)
         {
-            string sql = @"DELETE FROM TutorialAppSchema.Posts WHERE PostId = " + postId.ToString() +
-                    "AND UserId = " + this.User.FindFirst("UserId")?.Value;
+            string sql = @"EXEC TutorialAppSchema_spPosts_Delete @PostId = " + postId.ToString() +
+                    ", @UserId = " + this.User.FindFirst("UserId")?.Value;
 
             if (_dapper.ExecuteSql(sql))
             {
