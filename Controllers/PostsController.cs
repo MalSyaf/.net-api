@@ -1,3 +1,5 @@
+using Dapper;
+using System.Data;
 using DotnetAPI.Data;
 using DotnetAPI.Dtos;
 using DotnetAPI.Models;
@@ -23,18 +25,22 @@ namespace DotnetAPI.Controllers
         {
             string sql = @"EXEC TutorialAppSchema_spPosts_Get";
             string parameters = "";
+            DynamicParameters sqlParameters = new DynamicParameters();
 
             if (postId != 0)
             {
-                parameters += ", @PostId=" + postId.ToString();
+                parameters += ", @PostId = @PostIdParameter";
+                sqlParameters.Add("@PostIdParameter", postId, DbType.Int32);
             }
             if (userId != 0)
             {
-                parameters += ", @UserId=" + userId.ToString();
+                parameters += ", @UserId = @UserIdParameter";
+                sqlParameters.Add("@UserIdParameter", userId, DbType.Int32);
             }
             if (searchParam.ToLower() != "none")
             {
-                parameters += ", @SearchValue='" + searchParam + "'";
+                parameters += ", @SearchValue = @SearchValueParameter";
+                sqlParameters.Add("@SearchValueParameter", searchParam, DbType.String);
             }
 
             if (parameters.Length > 0)

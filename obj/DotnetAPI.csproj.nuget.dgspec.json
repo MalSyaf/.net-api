@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetAPI\\DotnetAPI.csproj": {}
+    "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetApi\\DotnetAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetAPI\\DotnetAPI.csproj": {
+    "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetApi\\DotnetAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetAPI\\DotnetAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetApi\\DotnetAPI.csproj",
         "projectName": "DotnetAPI",
-        "projectPath": "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetAPI\\DotnetAPI.csproj",
+        "projectPath": "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetApi\\DotnetAPI.csproj",
         "packagesPath": "C:\\Users\\ekhmal.zamri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetAPI\\obj\\",
+        "outputPath": "C:\\Users\\ekhmal.zamri\\dotnet-course-code\\DotnetApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ekhmal.zamri\\AppData\\Roaming\\NuGet\\NuGet.Config",
